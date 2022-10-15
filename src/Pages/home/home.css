@@ -184,7 +184,7 @@
   -webkit-box-shadow: 3px 0px 3px 1px rgba(0, 0, 0, 0.356); 
    box-shadow: 2px 0px 2px 1px rgba(0, 0, 0, 0.144);
    transform:  translateX(-110%);
-   transition: all 0.6s cubic-bezier(.14,.99,.73,.75);
+   transition: all 0.6s cubic-bezier(.14,.99,.84,.43);
 }
 .cardDouble .list .listItem .activeDetail{
   transform:  translateX(-9%);
