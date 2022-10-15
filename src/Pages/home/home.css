@@ -1,0 +1,362 @@
+
+
+.home{
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--paper);
+}
+
+.home .content{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100%;
+  transition: all 0.4s;
+  gap: 1em;
+
+
+}
+.content header{
+  display: flex;
+  position: absolute;
+  padding: 8px;
+  width: 100%;
+  left: 0;
+  top: 0;
+}
+.content header img{
+  width: 10em;
+  height: auto;
+}
+.content .cardsContent {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: auto;
+  gap: 1em;
+  margin-top: 65px;
+}
+
+.cardsContent .card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  background-color: var(--default);
+  padding: 20px;
+  border-radius: 8px;
+  min-height: 11%;
+  gap: 0.5em;
+  -webkit-box-shadow: 5px 5px 3px -1px rgba(0,0,0,0.18); 
+  box-shadow: 5px 5px 3px -1px rgba(0,0,0,0.18);
+}
+
+
+.card .icon {
+  display: flex;
+  padding: 10px;
+  margin: 5px;
+  background-color: var(--smain);
+  border-radius: 4px;
+}
+.card .icon .iconItem{
+  color: var(--default);
+}
+.card .value{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.726);
+  position: relative;
+}
+.card .value div:last-child{
+  font-size: 0.8em;
+  color: rgba(0, 0, 0, 0.315);
+}
+
+.card .edit {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.edit .iconOpacity{
+  color: rgba(0, 0, 0, 0.445);
+}
+
+.value .inputSal{
+  font-size: 1.3em;
+  position: relative;
+  width: 150px;
+  border:0;
+  outline:0;
+  background-color: transparent;
+  transition: all 0.3s;
+}
+.value .editValue{
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-size: 1.5vw;
+  width: 150px;
+  margin-right: 15px;
+  outline: 1px solid var(--main);
+  border-radius: 2px;
+  background-color: rgba(255, 132, 10, 0.377);
+  transition: all 0.8s;
+}
+
+.content .cardsContentDouble{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: auto;
+  gap: 1em;
+
+}
+.cardsContentDouble .cardDouble{
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background-color: var(--default);
+  padding: 20px;
+  border-radius: 8px;
+  width: 505px;
+  min-height: 25%;
+  -webkit-box-shadow: 5px 5px 3px -1px rgba(0,0,0,0.18); 
+  box-shadow: 5px 5px 3px -1px rgba(0,0,0,0.18);
+}
+.cardDouble .title{
+  text-align: center;
+  font-weight: 500;
+  font-size: 1.2em;
+  width: 100%;
+}
+.cardDouble .list{
+  display: flex;
+  flex-direction: row;
+  gap: 0.8em;
+
+  margin-top: 10px;
+}
+.cardDouble .list .listItem {
+  flex: 1;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8em;
+  background-color: rgba(245, 77, 35, 0.911);
+  padding: 12px;
+  border-radius: 8px;
+  color: var(--default);
+  font-weight: 500;
+  overflow: hidden;
+}
+.cardDouble .list .listItem .details{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 4px;
+}
+
+.cardDouble .list .listItem .detailContent{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  height: 100%;
+  width: 85%;
+  border-radius: 5px;
+  background-color: rgba(255, 132, 10, 0.94);
+  -webkit-box-shadow: 3px 0px 3px 1px rgba(0, 0, 0, 0.356); 
+   box-shadow: 2px 0px 2px 1px rgba(0, 0, 0, 0.144);
+   transform:  translateX(-110%);
+   transition: all 0.6s cubic-bezier(.14,.99,.73,.75);
+}
+.cardDouble .list .listItem .activeDetail{
+  transform:  translateX(-9%);
+  
+}
+
+
+.cardDouble .list .listItem .informtaion{
+  display: flex;
+  flex-direction: column;
+  font-size: 1.1em;
+  position: relative;
+}
+.cardDouble .list .listItem .informtaion span{
+
+  font-size: 0.65em;
+  color: rgba(255, 255, 255, 0.863);
+
+}
+
+
+.cardDouble .list .listItem .icon{
+  display: flex;
+  background-color: var(--default);
+  border-radius: 8px;
+  padding: 8px;
+}
+.cardDouble .list .listItem .icon .iconItem{
+  color:var(--dark);
+  font-size: 1.4em;
+}
+/*
+.home .content .inputInformations{
+  display: flex;
+  position: relative;
+  background-color: var(--default);
+  height: 38%;
+  padding: 0.5em;
+  font-weight: 700;
+  font-size: 1.3em;
+  border-radius: 10px;
+  -webkit-box-shadow: -1px 0px 11px 5px rgba(0,0,0,0.26); 
+  box-shadow: -1px 0px 11px 5px rgba(0,0,0,0.26);
+}
+.home .content .inputInformations .edit{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right:0;
+  top: 0;
+}
+.icon{
+  color: var(--paper);
+}
+.home .content .inputInformations .blockData{
+  flex: 1;
+  position: relative;
+  padding: 5px;
+}
+.home .content .inputInformations .blockData .informationsBlock{
+  display: flex;
+  gap: 0.5em;
+  height: 95%;
+}
+.home .content .inputInformations .blockData .title{
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+.home .content .inputInformations .blockData .card{
+  margin-top: 5px;
+  box-sizing: border-box;
+  padding: 5px;
+  border-radius: 0.4em;
+  width: 35%;
+  height: 93%;
+  font-size: 1.8vw;
+  text-align: center;
+  color: var(--default);
+  background-color:var(--smain);
+  position: relative;
+  transition: all 0.5s;
+
+}
+.home .content .inputInformations .blockData .modeE{
+  background-color:rgb(255, 108, 10);
+  transition: all 0.5s;
+}
+.home .content .inputInformations .blockData .amount{
+  display: flex;
+  margin-top: 2px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 80%;
+}
+.amount .inputSal{
+  flex: 1;
+  display: flex;
+  justify-content: end;
+  align-items: flex-end;
+  text-align: center;
+  font-size: 1.5em;
+  width: 100%;
+  border:0;
+  outline:0;
+  color: var(--default);
+  background-color: transparent;
+  transition: all 0.8s;
+  z-index: 0;
+}
+.amountBrute{
+  position: relative;
+}
+.amountBrute::after{
+  content: 'Valor Bruto';
+  height: 10px;
+  position: relative;
+  font-size: 0.46em;
+  bottom: 1.2em;
+  right: 0em;
+  color: var(--default);
+  text-shadow: 1px 2px 3px #00000069;
+  transition: all 0.7s;
+}
+.amount .editValue{
+  flex: 2;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-size: 3.5vw;
+  width: 100%;
+  outline: 1px solid var(--main);
+  border-radius: 5px;
+  color: var(--default);
+  background-color: rgba(255, 255, 255, 0.308);
+  transition: all 0.8s;
+}
+.amountBruteHide{
+  position: relative;
+}
+.amountBruteHide::before {
+  content: 'Valor Bruto';
+  opacity: 0;
+  position: absolute;
+  font-size: 0.5em;
+  bottom: 0.9em;
+  right: 0em;
+  transition: all 0.7s;
+}
+.amountLiquid{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  font-size: 1em;
+}
+.amountLiquid b{
+  margin-left: 2px;
+  margin-bottom: 0.4em;
+  font-size: 0.5em;
+  text-shadow: 1px 1px 2px #00000069;
+}
+*/
+.home .painel{
+  flex: 0.3;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 255, 0.377);
+  padding: 15px;
+  transition: all 0.4s;
+}
+

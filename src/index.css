@@ -1,8 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+:root{
+  --paper:rgba(255, 248, 240, 1);
+  --default:rgba(255, 255, 255, 1);
+  /*Primary*/
+  --light:#7986cb;
+  --main:rgba(139, 128, 249, 1);
+  --dark:rgba(13, 19, 33, 1);
+
+  /*Secondary*/
+  --slight:#ff4081;
+  --smain:rgba(255, 133, 10, 1);
+  --sdark:rgba(136, 22, 0, 1);
+}
 
 *{
   padding:0;
   margin:0;
   list-style:none;
+  font-family: 'Roboto', sans-serif;
   border:0;
   -webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -13,3 +28,4 @@
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
 }
+

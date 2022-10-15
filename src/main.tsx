@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import App from './App'
+import Home from './Pages/home';
 import './index.css'
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -36,7 +36,7 @@ const theme = createTheme({
     text:{
       primary:'rgba(0, 0, 0, 0.87)',
       secondary:'rgba(0, 0, 0, 0.54)',
-      disabled:'rgba(0, 0, 0, 0.38)',
+      disabled:'rgba(13, 19, 33, 0.7)',
     }
   }
 });
@@ -44,7 +44,7 @@ const theme = createTheme({
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <App />
+      <Home />
     </ThemeProvider>
     
   </React.StrictMode>
