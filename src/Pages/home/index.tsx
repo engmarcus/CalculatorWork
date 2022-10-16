@@ -104,22 +104,24 @@ function Home() {
         let h_ir   = parseFloat(amountTaxes.irrpf.replace('.','').replace(',','.').replace('R$','').replace('-',''))
          
         h_inss = parseFloat(((h_inss * temp)/amount).toFixed(2))
-        h_ir   = parseFloat(((h_ir * temp)/amount).toFixed(3))
+        h_ir   = parseFloat(((h_ir * temp)/amount).toFixed(2))
         var minuts_inss = calculateMinuts((parseFloat(h_inss.toString().split('.')[1])))
         var minuts_ir = calculateMinuts((parseFloat(h_ir.toString().split('.')[1])))
         var hinns = h_inss.toString().split('.')[0]
         var hir   = h_ir.toString().split('.')[0]
-     
+  
         let newState = [...calculations]
         newState[0].value =  hinns+'h:'+minuts_inss+'m'
         newState[1].value =  hir+'h:'+minuts_ir+'m'
         Setcalculations(newState)
-               
+       
         function calculateMinuts(minuts:number){
+          
           let temp = minuts*6
           if(temp>=60){
             temp = (temp/10)
            }
+         
           return temp.toFixed(0)
         }
   
@@ -141,7 +143,7 @@ function Home() {
         let dependent = 0
         let calInss=calculateInss(temp)
         let calIrrf=calculateIRRF(temp-(calInss?calInss*-1:0.00)-(189.59 * dependent))
-        let amountLiquid = temp - (calInss?calInss:0.00) - (calIrrf?calIrrf:0.00)
+        let amountLiquid = temp - (calInss?(calInss*-1):0.00) - (calIrrf?calIrrf*-1:0.00)
 
         CalculateAmount({
           inss:calInss? calInss.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}):'R$ 0,00',
@@ -282,6 +284,18 @@ function Home() {
         </div>
         <div className='cardsContentDouble'>
           <div className='cardDouble'>
+            <span className='title'> GANHO REAL</span>
+            <div className='list'>
+              <div className='monoCard'>
+                  <span className='icon'>
+                    <GiPayMoney className='iconItem'/>
+                  </span>
+                  <div className='informtaion' >
+                    {amountTaxes.net_salary}
+                    <span className='legend'>Valor Liquido</span>
+                  </div>
+              </div>
+            </div>
             <span className='title'> Deduções e Encargos</span>
             <div className='list'>
               <div className='listItem'>

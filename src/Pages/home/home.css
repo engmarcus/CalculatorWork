@@ -1,5 +1,4 @@
-
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
 .home{
   display: flex;
   position: absolute;
@@ -137,8 +136,11 @@
 }
 .cardDouble .title{
   text-align: center;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 1.2em;
+  font-family: 'Poppins', sans-serif;
+  
+  color: rgba(0, 0, 0, 0.753);
   width: 100%;
 }
 .cardDouble .list{
@@ -148,6 +150,36 @@
 
   margin-top: 10px;
 }
+.list .monoCard{
+  background-color:#13b982;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  gap: 0.6em;
+  margin-bottom: 13px;
+  border-radius: 8px;
+  width: 100%;
+}
+.monoCard .icon{
+  display: flex;
+  padding: 13px;
+  border-radius: 8px;
+  background-color: #fbfffe;
+}
+.monoCard .informtaion{
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  font-size: 1.2em;
+  color: #fff;
+}
+.monoCard .informtaion .legend{
+  font-size: 0.7em;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.795);
+}
+
 .cardDouble .list .listItem {
   flex: 1;
   position: relative;
@@ -203,7 +235,7 @@
   transition: all 0.6s;
 }
 
-.cardDouble .list .listItem .activeDetail .iconDetail{
+.cardDouble .list .listItem  .iconDetail{
   display: flex;
   justify-content: center;
   align-items: center;
