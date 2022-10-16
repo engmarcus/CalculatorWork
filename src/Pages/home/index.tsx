@@ -1,4 +1,4 @@
-import React ,{ useEffect, useState } from 'react';
+import React ,{ useEffect, useLayoutEffect, useState } from 'react';
 import CurrencyInput from 'react-currency-input-field';
 
 /*css */
@@ -16,7 +16,7 @@ import {
 import { FaRegEdit } from "react-icons/fa";
 import { GiWallet,GiPayMoney } from "react-icons/gi";
 import { HiClock } from "react-icons/hi";
-import { AiOutlineCaretDown } from "react-icons/ai";
+import { AiFillCaretRight,AiOutlineFieldTime } from "react-icons/ai";
 /**
  * Imagens
  */
@@ -32,12 +32,25 @@ type menuActive={
   name:string,
   active:boolean
 }
-
+type calculateHours={
+  name:string,
+  value:string
+}
 function Home() {
   const [editAmount,setAmount] = useState(false)
   const [editHours,setHoursEdit] = useState(false)
   const [valueAmount,setValueAmount] = useState('R$ 0,00')
   const [valueHours,setHours] = useState ('')
+  const [calculations,Setcalculations] = useState<calculateHours[]>([
+    {
+      name:'INSS',
+      value:'00h:00m'
+    },
+    {
+      name:'IRPF',
+      value:'00h:00m'
+    }
+  ])
   const [cardAtive,setMenu] = useState<menuActive[]>([
     {
       name:'inss',
@@ -74,13 +87,46 @@ function Home() {
     let menu = cardAtive.find(item => item.name==nameMenu)
     return menu?.active
   }
-
   function handleHours(hours:string){
     var v=hours.replace(/\D/g,"");
     v=v.replace(/(\d{3})(\d)/,"$1:$2");
     setHours(v)
   }
 
+
+
+  useLayoutEffect(()=>{
+    if(!editHours){
+      const temp  = parseFloat(valueHours.replace(':','.'))
+      const amount= parseFloat(valueAmount.replace('.','').replace(',','.').replace('R$',''))
+      if(temp && amount){
+        let h_inss = parseFloat(amountTaxes.inss.replace('.','').replace(',','.').replace('R$','').replace('-',''))
+        let h_ir   = parseFloat(amountTaxes.irrpf.replace('.','').replace(',','.').replace('R$','').replace('-',''))
+         
+        h_inss = parseFloat(((h_inss * temp)/amount).toFixed(2))
+        h_ir   = parseFloat(((h_ir * temp)/amount).toFixed(3))
+        var minuts_inss = calculateMinuts((parseFloat(h_inss.toString().split('.')[1])))
+        var minuts_ir = calculateMinuts((parseFloat(h_ir.toString().split('.')[1])))
+        var hinns = h_inss.toString().split('.')[0]
+        var hir   = h_ir.toString().split('.')[0]
+     
+        let newState = [...calculations]
+        newState[0].value =  hinns+'h:'+minuts_inss+'m'
+        newState[1].value =  hir+'h:'+minuts_ir+'m'
+        Setcalculations(newState)
+               
+        function calculateMinuts(minuts:number){
+          let temp = minuts*6
+          if(temp>=60){
+            temp = (temp/10)
+           }
+          return temp.toFixed(0)
+        }
+  
+        
+      }
+    }
+  },[editHours,amountTaxes])
 
   useEffect(()=>{
     if(!editAmount){
@@ -94,27 +140,29 @@ function Home() {
         const fourth ={value:7087.22,valueIR:4664.68,rate:(14/100),rateIR:(27.5/100),accumuladeIR:413.42,accumulated:828.39,sum:345.92}
         let dependent = 0
         let calInss=calculateInss(temp)
-        let calIrrf=calculateIRRF((temp-parseFloat(calInss?calInss:'0')-(189.59 * dependent)))
-        let amountLiquid = temp - parseFloat(calInss?calInss:'0') - parseFloat(calIrrf?calIrrf:'0')
+        let calIrrf=calculateIRRF(temp-(calInss?calInss*-1:0.00)-(189.59 * dependent))
+        let amountLiquid = temp - (calInss?calInss:0.00) - (calIrrf?calIrrf:0.00)
+
         CalculateAmount({
-          inss:calInss?'R$ -'+calInss.replace('.',','):'R$ 0,00',
-          irrpf:calIrrf?'R$ -'+calIrrf.replace('.',','):'R$ 0,00',
-          net_salary:amountLiquid?'R$ '+amountLiquid.toFixed(2).replace('.',','):'R$ 0,00'
+          inss:calInss? calInss.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}):'R$ 0,00',
+          irrpf:calIrrf?calIrrf.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}):'R$ 0,00',
+          net_salary:amountLiquid?amountLiquid.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}):'R$ 0,00'
 
         })
+
         function calculateInss(amount : number){
           if(amount <=first.value)
           {
-            var cal = amount * first.rate
-            return cal.toFixed(2)
+            var cal = (amount * first.rate)*-1
+            return cal
           }
        
           if(first.value < amount && amount <= second.value)
           { 
             var cal = first.accumulated
             const rest = amount - first.value
-            cal = cal + (rest * second.rate)
-            return cal.toFixed(2)
+            cal = (cal + (rest * second.rate))*-1
+            return cal
           }
           
           if(second.value < amount && amount <= third.value)
@@ -122,19 +170,19 @@ function Home() {
             console.log(second.value) 
             var cal = second.accumulated
             const rest = amount - second.value
-            cal = cal + (rest * third.rate)
-            return cal.toFixed(2)
+            cal = (cal + (rest * third.rate))*-1
+            return cal
           }   
           if(third.value < amount && amount <= fourth.value){
             var cal = third.accumulated
             const rest = amount - third.value
-            cal = cal + (rest * fourth.rate)
-            return cal.toFixed(2)
+            cal = (cal + (rest * fourth.rate))*-1
+            return cal
           }
      
           if(fourth.value < amount ){ 
            
-            return fourth.accumulated.toFixed(2)
+            return (fourth.accumulated*-1)
           } 
           
           
@@ -142,38 +190,37 @@ function Home() {
         function calculateIRRF(amount:number){
           if(amount <first.valueIR)
           {
-            return 'R$ 0,00'.toString()
+            return 0.00
             //ok
           }
           if(first.valueIR <= amount && amount <= second.valueIR)
           { 
             var cal = amount - first.valueIR-0.01
-            cal =(cal * first.rateIR)
-            return cal.toFixed(2) //ok
+            cal =(cal * first.rateIR)*-1
+            return cal //ok
           }
           if(second.valueIR < amount && amount <= third.valueIR)
           { 
             var cal = second.accumuladeIR
             const rest = amount - second.valueIR
-            cal = cal + (rest * second.rateIR)
-            return cal.toFixed(2) //ok
+            cal = (cal + (rest * second.rateIR))*-1
+            return cal //ok
           }    
           if(third.valueIR < amount && amount <= fourth.valueIR){
             var cal = third.accumuladeIR
             const rest = amount - third.valueIR
-            cal = cal + (rest * third.rateIR)
-            return cal.toFixed(2) 
+            cal = (cal + (rest * third.rateIR))*-1
+            return cal 
           }
           if(fourth.valueIR < amount ){ 
             var cal = fourth.accumuladeIR
             const rest = amount - fourth.valueIR+0.01
-            cal = cal + (rest * fourth.rateIR)
-            return cal.toFixed(2)
+            cal = (cal + (rest * fourth.rateIR))*-1
+            return cal
           } 
         }
 
-      }
-     
+      }     
     }
   },[editAmount])
 
@@ -247,11 +294,11 @@ function Home() {
                 </div>
                 <div className='details'>
                   <IconButton sx={{color:'#fff',fontSize:'15px'}} onClick={()=>handleMenu( 'inss' )}>
-                    <AiOutlineCaretDown />
+                    <AiFillCaretRight className={'button '.concat(getMenu('inss')?'activeButton':'')}/>
                   </IconButton>
                 </div>
                 <div className={getMenu('inss')?'detailContent activeDetail':'detailContent '}>
-                  conteudo
+                <AiOutlineFieldTime className='iconDetail'/>{calculations[0].value}
                 </div>
               </div>
               <div className='listItem'>
@@ -259,21 +306,21 @@ function Home() {
                   <GiPayMoney className='iconItem'/>
                 </span>
                 <div className='informtaion' >
-                  {amountTaxes.irrpf}
+                   {amountTaxes.irrpf}
                   <span>IRRPF</span>
                 </div>
                 <div className='details'>
                   <IconButton sx={{color:'#fff',fontSize:'15px'}} onClick={()=>handleMenu( 'ir' )}>
-                    <AiOutlineCaretDown />
+                    <AiFillCaretRight className={'button '.concat(getMenu('ir')?'activeButton':'')}/>
                   </IconButton>
                 </div>
                 <div className={getMenu('ir')?'detailContent activeDetail':'detailContent '}>
-                  conteudo
+                <AiOutlineFieldTime className='iconDetail'/> {calculations[1].value}
                 </div>
                
               </div>
+              
             </div>
-
           </div>
         </div>
       </div>

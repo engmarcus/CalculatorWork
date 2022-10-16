@@ -180,15 +180,41 @@
   height: 100%;
   width: 85%;
   border-radius: 5px;
-  background-color: rgba(255, 132, 10, 0.94);
-  -webkit-box-shadow: 3px 0px 3px 1px rgba(0, 0, 0, 0.356); 
-   box-shadow: 2px 0px 2px 1px rgba(0, 0, 0, 0.144);
+  border: 1px solid rgba(219, 23, 23, 0.8);
+  background-color: rgba(192, 36, 36, 0.8);
+  -webkit-box-shadow: 1px 0px 3px 1px rgba(0, 0, 0, 0.548);
+   box-shadow: 1px 0px 3px 1px rgba(0, 0, 0, 0.548);
    transform:  translateX(-110%);
    transition: all 0.6s cubic-bezier(.14,.99,.84,.43);
 }
 .cardDouble .list .listItem .activeDetail{
+  display: flex;
+  gap: 0.3em;
   transform:  translateX(-9%);
   
+}
+.button{
+  
+  transform: rotatez(0deg);
+  transition: all 1s;
+}
+.activeButton{
+  transform: rotatez(180deg);
+  transition: all 0.6s;
+}
+
+.cardDouble .list .listItem .activeDetail .iconDetail{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 2.4em;
+  margin-left: 1.2px;
+  padding: 8px;
+  padding-right: 2px;
+  border-radius: 5px;
+  color: var(--dark);
+  background-color: rgb(255, 255, 255);
 }
 
 
