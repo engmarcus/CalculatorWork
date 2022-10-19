@@ -17,6 +17,7 @@ import { FaRegEdit } from "react-icons/fa";
 import { GiWallet,GiPayMoney } from "react-icons/gi";
 import { HiClock } from "react-icons/hi";
 import { AiFillCaretRight,AiOutlineFieldTime } from "react-icons/ai";
+import Article from '../article';
 /**
  * Imagens
  */
@@ -339,7 +340,7 @@ function Home() {
         </div>
       </div>
       <div className='painel'>
-        painel esquerdo
+        <Article />
       </div>
     </div>
   )

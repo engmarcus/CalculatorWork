@@ -410,11 +410,11 @@
 }
 */
 .home .painel{
-  flex: 0.3;
+  flex: 0.5;
   display: flex;
   justify-content: center;
-  background-color: rgba(0, 0, 255, 0.377);
   padding: 15px;
+  margin-top: 50px;
   transition: all 0.4s;
 }
 

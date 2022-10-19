@@ -1,0 +1,116 @@
+.mainArticle{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1em;
+  width: 100%;
+}
+.mainArticle .title{
+  font-size: 1.5em;
+  font-weight: 500;
+}
+
+.mainArticle .dreansList{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  padding: 15px;
+  background-color: var(--default);
+  -webkit-box-shadow: 5px 5px 3px -1px rgba(0,0,0,0.18); 
+  box-shadow: 5px 5px 3px -1px rgba(0,0,0,0.18);
+}
+
+.dreansList .dreansHeader{
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+  width: 100%;
+  position: relative;
+
+}
+
+.dreansHeader .iconAdd {
+  border:  2px solid rgba(0, 0, 0, 0.137);
+  font-size: 1.3em;
+  border-radius: 8px;
+  position: absolute;
+  right: 25px;
+  top: 2px;
+
+}
+
+.dreansList .list{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 95%;
+  margin-top: 10px;
+  gap: 0.4em;
+}
+
+.list li{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 2px;
+  padding-bottom: 5px;
+}
+
+.list li .listContent{
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+  padding: 12px;
+  background-color: var(--main);
+  color: var(--default);
+  width: 98%;
+  border-radius: 5px;
+  -webkit-box-shadow: 2px 3px 1px 0px #000000; 
+  box-shadow: 3px 3px 1px 0px #0000004b;
+  z-index: 1;
+  transition: all 1s;
+  
+}
+
+.list li .listIcon{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5em;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: var(--default);
+}
+
+li .itensHide{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  height: 100%;
+  color: #000;
+  right: 0.2em;
+  gap: 0.3em;
+}
+
+.itensHide .icon{
+  background-color: var(--smain);
+  padding: 5px;
+  height: 60%;
+  width: 60%;
+  border-radius: 5px;
+}
+
+
+.list li .openList{
+  position: relative;
+    transform: translateX(-18%);
+  }
