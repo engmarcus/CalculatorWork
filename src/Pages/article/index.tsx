@@ -37,7 +37,7 @@ function Article(){
             </div>
           </li>
           <li>
-            <div className="listContent">
+            <div className="listContent ">
               <div className="listIcon"> <FcPaid /> </div>
               <div> OBJETIVO DETALHADO </div>
             </div>

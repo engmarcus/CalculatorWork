@@ -11,7 +11,9 @@
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
+    "@heroicons/react": "^2.0.12",
     "@mui/material": "^5.10.8",
+    "@react-icons/all-files": "^4.1.0",
     "react": "^18.2.0",
     "react-currency-input-field": "^3.6.5",
     "react-dom": "^18.2.0",

@@ -1,0 +1,165 @@
+.areaCards{
+  display: flex;
+  align-items: center;
+  flex-direction: column;  
+  gap: 1em;
+  width: 100vw;
+  height: 100%;
+}
+.areaCards .content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 80%;
+}
+
+.content h1{
+  margin-bottom: 16px;
+}
+
+.areaCards .content .cardsSession{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  flex-direction: row;
+  transition: all 0.8s;
+}
+
+.areaCards .content .cardsSession .grid {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  width:100%;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1em;
+}
+
+.areaCards .content .cardsSession .grid .card{
+  display: flex;
+  align-items: center;
+  width: 240px;
+  gap: .9em;
+  background-color:var(--default);
+  padding: 1em;
+  border-radius: 5px;
+  -webkit-box-shadow: 0.5px 1.5px 1px 0px rgba(0, 0, 0, 0.397);
+  -moz-box-shadow: 0.5px 1.5px 1px 0px rgba(0, 0, 0, 0.397);
+  box-shadow: 0.5px 1.5px 1px 0px rgba(0, 0, 0, 0.397);
+  
+}
+
+.card .iconCard{
+  display: flex;
+  background-color: var(--smain);
+  color: var(--default);
+  padding: 0.4em;
+  font-size: 1.5em;
+  border-radius: 0.2em;
+}
+
+.card .inforCard div:first-child{
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+.card .inforCard div:last-child{
+  font-size: 0.8em;
+  font-weight: 300;
+
+}
+
+.areaCards .cardsSession .negative{
+  color: rgb(255, 2, 2);
+}
+
+.card .iconInvert{
+  background-color: rgb(255, 2, 2);
+}
+
+
+.areaCards .alingTitle{
+  display: flex;
+  align-items: center;
+  gap: 0.3em;
+}
+.alingTitle .icon{
+  display: flex;
+  color: var(--default);
+  background-color: var(--smain);
+  border-radius: 8px;
+  padding: 6px;
+  font-size: 0.95em;
+  transition: all 0.4s;
+}
+.alingTitle .icon:hover{
+  color: rgba(0, 0, 0, 0.479);
+  background-color: rgba(255, 132, 10, 0.712);
+  border-radius: 5px;
+}
+
+
+.areaCards .lineH{
+  content: '';
+  background: linear-gradient(0deg, rgba(0,0,0,0.6418942577030813) 0%, rgba(255,255,255,1) 76%);
+  width: 85%;
+  height: 1px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.areaCards .objetive{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  height: 100%;
+  border-radius: 10px;
+}
+.areaCards .objetive .grid{
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  width:100%;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1em;
+}
+
+
+.grid .cardObj{
+  display: flex;
+  align-items: center;
+  gap: .4em;
+  width: 250px;
+  min-height: 70px;
+  background-color:var(--default);
+  padding: 1em;
+  border-radius: 5px;
+  overflow: hidden;
+  -webkit-box-shadow: 0.5px 1.5px 1px 0px rgba(0, 0, 0, 0.397);
+  -moz-box-shadow: 0.5px 1.5px 1px 0px rgba(0, 0, 0, 0.397);
+  box-shadow: 0.5px 1.5px 1px 0px rgba(0, 0, 0, 0.397);
+}
+
+.cardObj .iconCard{
+  display: flex;
+  color: var(--default);
+  padding: 0.4em;
+  font-size: 1.5em;
+  border-radius: 0.2em;
+
+}
+.cardObj .inforCard div:first-child{
+  font-size: 1.2em;
+  font-weight: 600;
+}
+.cardObj .inforCard div:last-child{
+  font-size: 0.8em;
+  font-weight: 300;
+  background-color: bisque;
+  width: 100%;
+  overflow: hidden;
+
+}
+
+h1 {
+  font-size: 1.7em;
+}

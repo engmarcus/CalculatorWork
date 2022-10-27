@@ -4,6 +4,7 @@ import Home from './Pages/home';
 import './index.css'
 
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import NewHome from './Pages/newPage';
 
 const theme = createTheme({
   palette:{
@@ -44,7 +45,7 @@ const theme = createTheme({
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
-      <Home />
+      <NewHome />
     </ThemeProvider>
     
   </React.StrictMode>
