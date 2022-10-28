@@ -119,7 +119,7 @@
   align-items: center;
   justify-items: center;
   width:100%;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 1em;
 }
 
@@ -154,10 +154,86 @@
 .cardObj .inforCard div:last-child{
   font-size: 0.8em;
   font-weight: 300;
-  background-color: bisque;
   width: 100%;
   overflow: hidden;
 
+}
+
+
+.modalCadastro{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.modalCadastro .cards{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  gap: 0.8em;
+  font-weight: 800;
+  font-size: 1.5em;
+  background-color: var(--default);
+  padding: 20px;
+  border-radius: 10px;
+  min-width: 300px;
+  min-height: 250px;
+}
+.cards .formCard{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  font-weight: 300;
+  font-size: 0.8em;
+}
+.formCard .inputsCards{
+  width: 80%;
+  margin-bottom: 10px;
+}
+
+.formCard .options{
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.8em;
+  width: 80%;
+}
+
+.options .btnInput{
+  flex: 1;
+  color: var(--default);
+  background-color: rgba(255, 132, 10, 0.993);
+  display: flex;
+  padding: 10px;
+}
+
+.options .btnInput:hover{
+  color: rgba(0, 0, 0, 0.534);
+  background-color: rgba(255, 132, 10, 0.637);
+}
+
+
+.cards .option{
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.774);
+  color: blanchedalmond;
+  width: 100%;
+  border-radius: 8px;
+  top:0px;
+  padding: 10px;
+  height: 100%;
+  z-index: 1;
+  transform: translateY(-100%);
+  transition: all 0.8s;
+
+}
+.cards  .optActive{
+  transform: translateY(0%);
 }
 
 h1 {
