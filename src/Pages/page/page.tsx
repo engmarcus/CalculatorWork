@@ -53,6 +53,7 @@ import {
 import { Button, Checkbox, Icon, IconButton, Input, InputAdornment, InputLabel, TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
 import Modal from '@mui/material/Modal';
+import ColorSelector from '../colorSelector';
 
 /** Tipagens */
 type objetive ={
@@ -284,6 +285,10 @@ function Page(){
                 (<>
                   <div className='title'>
                   Personalize suas Cores
+                 </div>
+                 <div className='forColors'>
+                  <ColorSelector />
+
                  </div>
                 </>)
                 }
