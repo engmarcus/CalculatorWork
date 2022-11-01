@@ -7,12 +7,50 @@ import { GiWallet,GiPayMoney } from "react-icons/gi";
 import { HiClock } from "react-icons/hi";
 import { MdLibraryAdd } from "react-icons/md";
 import {AiOutlineBgColors} from "react-icons/ai"
+import { RiCloseCircleFill } from "react-icons/ri";
 import { TbRowInsertBottom } from "react-icons/tb";
-import { AiFillCaretRight,AiOutlineFieldTime } from "react-icons/ai";
+import { 
+  IoCarOutline,
+  IoCar,
+  IoAirplaneOutline,
+  IoAirplane,
+  IoBagHandleOutline,
+  IoBagHandle,
+  IoBeer,
+  IoBeerOutline,
+  IoBookOutline,
+  IoBook,
+  IoCart,
+  IoCartOutline,
+  IoDiamondOutline,
+  IoDiamond,
+  IoDesktop,
+  IoDesktopOutline,
+  IoGameControllerOutline,
+  IoGameController,
+  IoGiftOutline,
+  IoGift,
+  IoHeadset,
+  IoHeadsetOutline,
+  IoHammer,
+  IoHammerOutline,
+  IoHomeOutline,
+  IoHome,
+  IoLaptop,
+  IoLaptopOutline,
+  IoPawOutline,
+  IoPaw,
+  IoShirt,
+  IoShirtOutline,
+  IoStorefrontOutline,
+  IoStorefront,
+  IoWallet,
+  IoWalletOutline
+} from "react-icons/io5";
 
 
 /** Bibliotecas */
-import { Button, Icon, IconButton, Input, InputAdornment, InputLabel, TextField } from '@mui/material';
+import { Button, Checkbox, Icon, IconButton, Input, InputAdornment, InputLabel, TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
 import Modal from '@mui/material/Modal';
 
@@ -26,16 +64,38 @@ type objetive ={
   color_card:string,
 }
 
+
+
 function Page(){
   const [objetive,setObjetive] = useState<objetive[]>(getObjetives())
+  const [menuChek,setCheck] = useState('IoCar')
+  const [options,setOption] = useState('')
+  const [optionActive,SetActiveOption] = useState(false)
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+  
 
+  function menuObjetiveSelect(selection :string,inOpen:boolean){
+    if(selection == 'icons'){
+      setOption(selection)
+    }else{
+      setOption(selection)
+    }
+    SetActiveOption(inOpen)
+  }
+  function handleIcon(icon : string){
+    setCheck(icon)
+  }
 
+  function isCheckIcon(icon:string){
+      if(menuChek == icon){
+        return true
+      }
+      return false
+  }
 
   function addObjetive(){
-    console.log('entrei')
     handleOpen()
   }
 
@@ -58,9 +118,6 @@ function Page(){
     }
 
   }
- useEffect(()=>{
-  console.log(objetive)
- })
 
 
   return(
@@ -68,6 +125,7 @@ function Page(){
       <Modal
         open={open}
         onClose={handleClose}
+        disableEnforceFocus={false}
         
       >
         <div className='modalCadastro'>
@@ -91,18 +149,150 @@ function Page(){
                 <Button className='btnInput'
                  startIcon={<FaIcons />}
                  variant='text'  
+                 onClick={()=>menuObjetiveSelect('icons',true)}
                 >Icones</Button>
  
                 <Button className='btnInput'
                 startIcon={<AiOutlineBgColors />}
                 variant='text'  
+                onClick={()=>menuObjetiveSelect('colors',true)}
                 >Cores</Button>
               </div>
 
 
             </div>
-            <div className='option optActive'>
-              teste
+            <div className={'option '.concat(optionActive?'optActive':'')}>
+              <div className='area'>
+                {options=='icons'?
+                (<>
+                 <div className='title'>
+                  Escolha seu Icone
+                 </div>
+                 <div className='gridIcons'>
+                  <Checkbox
+                    icon={<IoCarOutline className='selectIcon' />}
+                    checkedIcon={<IoCar className='selectIcon select' />} 
+                    checked={isCheckIcon('IoCar')}
+                    onChange={(e)=>handleIcon('IoCar')}              
+                  />
+                  <Checkbox
+                    icon={<IoAirplaneOutline className='selectIcon' />}
+                    checkedIcon={<IoAirplane className='selectIcon select' />} 
+                    checked={isCheckIcon('IoAirplane')}
+                    onChange={(e)=>handleIcon('IoAirplane')}              
+                  />
+                  <Checkbox
+                    icon={<IoBagHandleOutline className='selectIcon' />}
+                    checkedIcon={<IoBagHandle className='selectIcon select' />} 
+                    checked={isCheckIcon('IoBagHandle')}
+                    onChange={(e)=>handleIcon('IoBagHandle')}              
+                  />
+                  <Checkbox
+                    icon={<IoBeerOutline className='selectIcon' />}
+                    checkedIcon={<IoBeer className='selectIcon select' />} 
+                    checked={isCheckIcon('IoBeer')}
+                    onChange={(e)=>handleIcon('IoBeer')}              
+                  />
+                  <Checkbox
+                    icon={<IoBookOutline className='selectIcon' />}
+                    checkedIcon={<IoBook className='selectIcon select' />} 
+                    checked={isCheckIcon('IoBook')}
+                    onChange={(e)=>handleIcon('IoBook')}              
+                  />
+                  <Checkbox
+                    icon={<IoCartOutline className='selectIcon' />}
+                    checkedIcon={<IoCart className='selectIcon select' />} 
+                    checked={isCheckIcon('IoCart')}
+                    onChange={(e)=>handleIcon('IoCart')}              
+                  />
+                  <Checkbox
+                    icon={<IoDiamondOutline className='selectIcon' />}
+                    checkedIcon={<IoDiamond className='selectIcon select' />} 
+                    checked={isCheckIcon('IoDiamond')}
+                    onChange={(e)=>handleIcon('IoDiamond')}              
+                  />
+                  <Checkbox
+                    icon={<IoDesktopOutline className='selectIcon' />}
+                    checkedIcon={<IoDesktop className='selectIcon select' />} 
+                    checked={isCheckIcon('IoDesktop')}
+                    onChange={(e)=>handleIcon('IoDesktop')}              
+                  />
+                  <Checkbox
+                    icon={<IoLaptopOutline className='selectIcon' />}
+                    checkedIcon={<IoLaptop className='selectIcon select' />} 
+                    checked={isCheckIcon('IoLaptop')}
+                    onChange={(e)=>handleIcon('IoLaptop')}              
+                  />
+                  <Checkbox
+                    icon={<IoGameControllerOutline className='selectIcon' />}
+                    checkedIcon={<IoGameController className='selectIcon select' />} 
+                    checked={isCheckIcon('IoGameController')}
+                    onChange={(e)=>handleIcon('IoGameController')}              
+                  />
+                  <Checkbox
+                    icon={<IoGiftOutline className='selectIcon' />}
+                    checkedIcon={<IoGift className='selectIcon select' />} 
+                    checked={isCheckIcon('IoGift')}
+                    onChange={(e)=>handleIcon('IoGift')}              
+                  />
+                  <Checkbox
+                    icon={<IoHammerOutline className='selectIcon' />}
+                    checkedIcon={<IoHammer className='selectIcon select' />} 
+                    checked={isCheckIcon('IoHammer')}
+                    onChange={(e)=>handleIcon('IoHammer')}              
+                  />
+                  <Checkbox
+                    icon={<IoHeadsetOutline className='selectIcon' />}
+                    checkedIcon={<IoHeadset className='selectIcon select' />} 
+                    checked={isCheckIcon('IoHeadset')}
+                    onChange={(e)=>handleIcon('IoHeadset')}              
+                  />
+                  <Checkbox
+                    icon={<IoHomeOutline className='selectIcon' />}
+                    checkedIcon={<IoHome className='selectIcon select' />} 
+                    checked={isCheckIcon('IoHome')}
+                    onChange={(e)=>handleIcon('IoHome')}              
+                  />
+                  <Checkbox
+                    icon={<IoPawOutline className='selectIcon' />}
+                    checkedIcon={<IoPaw className='selectIcon select' />} 
+                    checked={isCheckIcon('IoPaw')}
+                    onChange={(e)=>handleIcon('IoPaw')}              
+                  />
+                   <Checkbox
+                    icon={<IoShirtOutline className='selectIcon' />}
+                    checkedIcon={<IoShirt className='selectIcon select' />} 
+                    checked={isCheckIcon('IoShield')}
+                    onChange={(e)=>handleIcon('IoShield')}              
+                  />
+                  <Checkbox
+                    icon={<IoStorefrontOutline className='selectIcon' />}
+                    checkedIcon={<IoStorefront className='selectIcon select' />} 
+                    checked={isCheckIcon('IoStorefront')}
+                    onChange={(e)=>handleIcon('IoStorefront')}              
+                  />
+                  <Checkbox
+                    icon={<IoWalletOutline className='selectIcon' />}
+                    checkedIcon={<IoWallet className='selectIcon select' />} 
+                    checked={isCheckIcon('IoWallet')}
+                    onChange={(e)=>handleIcon('IoWallet')}              
+                  />
+
+                 </div>
+                </>)
+                :
+                (<>
+                  <div className='title'>
+                  Personalize suas Cores
+                 </div>
+                </>)
+                }
+                </div>
+              <div className='close'>
+                <IconButton className='icon' onClick={()=>SetActiveOption(false)}>
+                  <RiCloseCircleFill/>
+                </IconButton>
+              </div>
             </div>
           </div>
         </div>
